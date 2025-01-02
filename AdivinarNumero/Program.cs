@@ -7,27 +7,36 @@ namespace AdivinarNumero
         static void Main(string[] args)
         {
             Random rand = new Random();
-            int randNumber =rand.Next(0,101);
-            int number;
+            byte randNumber = (byte)rand.Next(0,101);
+            byte number;
             Console.WriteLine("Bienvenido a adivina el número");
             Console.WriteLine("Escribe un número del 0 al 100");
             do {
                 try
                 {
-                number = Int32.Parse(Console.ReadLine());
-                if (number >= 0 && number <= 100)
-                {
+                    number = byte.Parse(Console.ReadLine());
                     if (number < randNumber) Console.WriteLine($"El número {number} es menor al número correcto");
                     else Console.WriteLine($"El número {number} es mayor al número correcto");
-                }
-                else Console.WriteLine("Número inválido. Debe elegir entre 0 a 100");
-
                 }
                 catch (FormatException)
                 {
                     Console.WriteLine("Ingreso inválido. Ingrese entre 0 a 100");
                     number = 0;
                 }
+                catch (OverflowException)
+                {
+                    Console.WriteLine("Número inválido. Debe elegir entre 0 a 100");
+                    number = 0;
+                }
+
+                // Si tuvieramos muchas excepciones conviene usar Exception que es el padre de todas las excepciones)
+                //catch (Exception e) 
+                //{
+                //    Console.WriteLine("Ingreso inválido. Ingrese entre 0 a 100");
+                //    number = 0;
+                //    Console.WriteLine(e.Message);
+                //}
+
                 // verifica si el usuario ingresó un número
                 //while (!Int32.TryParse(Console.ReadLine(), out number))
                 //{
