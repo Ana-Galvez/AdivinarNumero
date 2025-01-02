@@ -18,9 +18,10 @@ namespace AdivinarNumero
                     if (number < randNumber) Console.WriteLine($"El número {number} es menor al número correcto");
                     else Console.WriteLine($"El número {number} es mayor al número correcto");
                 }
-                catch(Exception e) when (e.GetType()!= typeof(FormatException))
+                catch (Exception e) when (e.GetType() != typeof(FormatException))
                 {
                     Console.WriteLine("Hubo un error. Digite de 0 a 100");
+                    number = 0;
                 }
                 catch (FormatException)
                 {
