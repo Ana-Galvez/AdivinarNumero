@@ -18,16 +18,20 @@ namespace AdivinarNumero
                     if (number < randNumber) Console.WriteLine($"El número {number} es menor al número correcto");
                     else Console.WriteLine($"El número {number} es mayor al número correcto");
                 }
+                catch(Exception e) when (e.GetType()!= typeof(FormatException))
+                {
+                    Console.WriteLine("Hubo un error. Digite de 0 a 100");
+                }
                 catch (FormatException)
                 {
                     Console.WriteLine("Ingreso inválido. Ingrese entre 0 a 100");
                     number = 0;
                 }
-                catch (OverflowException)
-                {
-                    Console.WriteLine("Número inválido. Debe elegir entre 0 a 100");
-                    number = 0;
-                }
+                //catch (OverflowException)
+                //{
+                //    Console.WriteLine("Número inválido. Debe elegir entre 0 a 100");
+                //    number = 0;
+                //}
 
                 // Si tuvieramos muchas excepciones conviene usar Exception que es el padre de todas las excepciones)
                 //catch (Exception e) 
