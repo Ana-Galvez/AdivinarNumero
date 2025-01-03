@@ -15,8 +15,11 @@ namespace AdivinarNumero
                 try
                 {
                     number = byte.Parse(Console.ReadLine());
+                    if(number >=0 && number <= 100)
+                    {
                     if (number < randNumber) Console.WriteLine($"El número {number} es menor al número correcto");
                     else Console.WriteLine($"El número {number} es mayor al número correcto");
+                    }else Console.WriteLine("Número inválido. Debe ingresar entre 0 a 100");
                 }
                 catch (Exception e) when (e.GetType() != typeof(FormatException))
                 {
@@ -47,8 +50,6 @@ namespace AdivinarNumero
                 //{
                 //    Console.WriteLine("Operación inválida. Ingrese entre 0 a 100");
                 //};
-
-                // verifica que el usuario ingrese entre 0 al 100
             } while (number != randNumber);
             Console.WriteLine("FELICIDADES ACERTASTE EL NÚMERO");
         }
